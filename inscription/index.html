@@ -77,10 +77,12 @@ Cette inscription est destinée aux <strong>femmes et hommes célibataires séri
 <input id="whatsapp" placeholder="Ex : +237 6 91 96 55 64">
 
 <button class="btn" type="submit" id="btn">Envoyer mon dossier</button>
-<button type="button" class="btn btn-messenger" 
-    onclick="window.open('https://m.me/ton_nom_de_page_facebook','_blank')">
-    Contacter via Messenger
+
+<button type="button" class="btn btn-messenger"
+onclick="window.open('https://m.me/agence_matimoniale_noir_&_blanc','_blank')">
+Contacter via Messenger
 </button>
+
 </form>
 
 <p class="note" id="note">
@@ -91,9 +93,18 @@ Cette inscription est destinée aux <strong>femmes et hommes célibataires séri
 
 <script>
 const texts = {
-fr: {title:"Inscription officielle",desc:"Cette inscription est destinée aux femmes et hommes célibataires sérieux.",btn:"Envoyer mon dossier"},
-en: {title:"Official Registration",desc:"This registration is intended for serious single men and women.",btn:"Submit my application"}
+fr: {
+  title:"Inscription officielle",
+  desc:"Cette inscription est destinée aux femmes et hommes célibataires sérieux.",
+  btn:"Envoyer mon dossier"
+},
+en: {
+  title:"Official Registration",
+  desc:"This registration is intended for serious single men and women.",
+  btn:"Submit my application"
+}
 };
+
 function setLang(l){
   document.getElementById("title").innerText=texts[l].title;
   document.getElementById("desc").innerText=texts[l].desc;
@@ -102,6 +113,7 @@ function setLang(l){
 
 document.getElementById("form").addEventListener("submit", function(e){
   e.preventDefault();
+
   let message =
     "Nouvelle inscription\n"+
     "Genre: "+genre.value+"\n"+
@@ -115,7 +127,10 @@ document.getElementById("form").addEventListener("submit", function(e){
     "WhatsApp: "+(whatsapp.value || "Non renseigné");
 
   if(whatsapp.value.trim() !== ""){
-    window.open("https://wa.me/237657904385?text="+encodeURIComponent(message), "_blank");
+    window.open(
+      "https://wa.me/237691965564?text="+encodeURIComponent(message),
+      "_blank"
+    );
   } else {
     window.location.href =
       "mailto:agencematrimoniale460@gmail.com"+
@@ -123,16 +138,14 @@ document.getElementById("form").addEventListener("submit", function(e){
       "&body="+encodeURIComponent(message);
   }
 
-  const form = e.target;
-  form.style.display = 'none';
-  const container = form.parentElement;
-  const thanks = document.createElement('p');
-  thanks.style.color='green';
-  thanks.style.fontWeight='bold';
-  thanks.style.textAlign='center';
-  thanks.style.marginTop='20px';
+  this.style.display = "none";
+  const thanks = document.createElement("p");
+  thanks.style.color="green";
+  thanks.style.fontWeight="bold";
+  thanks.style.textAlign="center";
+  thanks.style.marginTop="20px";
   thanks.innerText="✅ Merci ! Votre inscription a bien été enregistrée. Vous serez contacté(e) bientôt.";
-  container.appendChild(thanks);
+  this.parentElement.appendChild(thanks);
 });
 
 setLang('fr');
